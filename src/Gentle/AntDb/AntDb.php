@@ -326,16 +326,22 @@ class AntDb
         }
 
         try {
-            $stmt = $this->pdo->prepare($sql);
 
-            if (!empty($types)) {
-                foreach ($params as $key => $val) {
-                    $type = isset($types[$key]) ? $types[$key] : PDO::PARAM_STR;
-                    $stmt->bindValue($key+1, $val, $type);
+            if (!empty($params)) {
+                $stmt = $this->pdo->prepare($sql);
+
+                if (!empty($types)) {
+                    foreach ($params as $key => $val) {
+                        $type = isset($types[$key]) ? $types[$key] : PDO::PARAM_STR;
+                        $stmt->bindValue($key+1, $val, $type);
+                    }
+
+                    $stmt->execute();
+                } else {
+                    $stmt->execute($params);
                 }
-                $stmt->execute();
             } else {
-                $stmt->execute($params);
+                $stmt = $this->pdo->query($sql);
             }
 
             $stmt->setFetchMode($this->getOption('fetch.style'));
@@ -368,9 +374,7 @@ class AntDb
         }
 
         try {
-            if (empty($params)) {
-                $result = $this->pdo->exec($sql);
-            } else {
+            if (!empty($params)) {
                 $stmt = $this->pdo->prepare($sql);
 
                 if (!empty($types)) {
@@ -384,6 +388,8 @@ class AntDb
                 }
 
                 $result = $stmt->rowCount();
+            } else {
+                $result = $this->pdo->exec($sql);
             }
 
             return $result;
