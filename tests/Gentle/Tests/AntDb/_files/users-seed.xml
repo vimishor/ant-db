@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<dataset>
+    <users_test id="1" username="steve" password="steve_pass" />
+    <users_test id="2" username="nancy" password="nancy_pass" />
+</dataset>
