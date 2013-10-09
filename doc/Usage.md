@@ -92,3 +92,23 @@ echo $user['password']; // will output "secret"
 $users = $db->read('select * from users where email LIKE ?', array('%@example.com'))->fetchAll();
 var_dump($users);
 ```
+
+### Delete rows
+
+Nancy wishes to delete her account, so we need to remove the row associated her account from "users" table:
+
+```
+$result = $db->delete('users', array('username' => 'nancy') );
+
+if ($result) {
+    echo "Account deleted.";
+} else {
+
+    echo "Nothing has been changed.";
+
+    // output any additional information that we might have.
+    if ($db->hasError()) {
+        echo '[ERROR] : '. $db->getLastError();
+    }
+}
+```
