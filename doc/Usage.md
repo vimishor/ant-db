@@ -90,8 +90,26 @@ echo $user['password']; // will output "secret"
 
 ```
 $users = $db->read('select * from users where email LIKE ?', array('%@example.com'))->fetchAll();
-var_dump($users);
+
+foreach ($users as $user) {
+    echo $user->username ."'s password is ". $user->password;
+}
 ```
+
+### Fetch one result at a time
+
+As an alternative to "fetch all results" example from above, you can accomplish the same thing like this:
+
+```
+$users = $db->read('select * from users');
+
+while($user = $users->fetch()) {
+    echo $user->username ."'s password is ". $user->password;
+}
+```
+
+The key difference here is that while in the first example we fetch all the results at once from the database, in the
+second example we fetch one result at a time.
 
 ### Delete rows
 
