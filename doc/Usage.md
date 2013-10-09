@@ -51,7 +51,7 @@ if ($result !== false) {
 After we created out shiny table, let's insert some data. For this we can use the `insert()` method.
 
 ```
-$result = $db->insert('users', array(
+$rows = $db->insert('users', array(
     'username'  => 'nancy',
     'password'  => 'nancy_pass',
     'email'     => 'doe@example.com'
@@ -75,6 +75,16 @@ $result = $db->update(
     array('password' => 'secret', 'email' => 'nancy@example.com'),
     array('username' => 'nancy')
 );
+
+if ($result) {
+    echo 'Data has been updated';
+} else {
+    echo 'Nothing changed';
+
+    if ($db->hasError()) {
+        echo $db->getLastError();
+    }
+}
 ```
 
 ### Fetch one result
@@ -92,7 +102,7 @@ echo $user['password']; // will output "secret"
 $users = $db->read('select * from users where email LIKE ?', array('%@example.com'))->fetchAll();
 
 foreach ($users as $user) {
-    echo $user->username ."'s password is ". $user->password;
+    echo $user->username ."'s password is ". $user->password."<br>";
 }
 ```
 
@@ -104,7 +114,7 @@ As an alternative to "fetch all results" example from above, you can accomplish 
 $users = $db->read('select * from users');
 
 while($user = $users->fetch()) {
-    echo $user->username ."'s password is ". $user->password;
+    echo $user->username ."'s password is ". $user->password."<br>";
 }
 ```
 
