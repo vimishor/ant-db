@@ -30,3 +30,7 @@ You must know the drill by now: fork, write awesome code and send pull request.
 ### License
 
 AndDb is licensed under the MIT License - see the LICENSE file for details
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vimishor/ant-db/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
