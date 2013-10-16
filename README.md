@@ -1,4 +1,4 @@
-## AntDb
+## AntDb [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vimishor/ant-db/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Although mysql extension is deprecated starting with PHP 5.5.0 and many of the professionals recommend PDO as an
 alternative, it's still heavily used ( _mostly by beginners_ ), because there are a lot of tutorials online targeting
@@ -30,7 +30,3 @@ You must know the drill by now: fork, write awesome code and send pull request.
 ### License
 
 AndDb is licensed under the MIT License - see the LICENSE file for details
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vimishor/ant-db/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
